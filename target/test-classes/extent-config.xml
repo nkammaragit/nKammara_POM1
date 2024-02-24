@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+    <!-- Report theme -->
+    <configuration>
+        <theme>standard</theme>
+    </configuration>
+    
+    <!-- Report name and document title -->
+    <name>Extent Report Demo</name>
+    <documentTitle>Extent Report</documentTitle>
+    
+    <!-- Chart configuration -->
+    <chartVisibilityOnOpen>true</chartVisibilityOnOpen>
+    <chartTheme>standard</chartTheme>
+    
+    <!-- Test configuration -->
+    <test>
+        <!-- Test level configuration -->
+        <status>
+            <display>true</display>
+            <info>true</info>
+            <warning>true</warning>
+            <error>true</error>
+            <fatal>true</fatal>
+        </status>
+    </test>
+</extentreports>
