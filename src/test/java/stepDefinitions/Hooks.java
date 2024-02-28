@@ -4,8 +4,7 @@ import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.openqa.selenium.WebDriver;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -14,7 +13,8 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.letzAutomate.qa.base.TestBase;
 import com.letzAutomate.qa.util.ExtentManager;
 import com.letzAutomate.qa.util.QuitAllBrowsers;
-import com.letzAutomate.qa.util.TestUtil2;
+import com.letzAutomate.qa.util.RenameExtentWithTimestamp;
+import com.letzAutomate.qa.util.ScreenshotUtility;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -27,7 +27,14 @@ public class Hooks {
 	public static ExtentTest test;
 	public static TestBase testbase= new TestBase();
 	public static Scenario scenario;
-
+	
+	
+	//===========
+	public static WebDriver driver;
+	public Hooks(WebDriver driver) {
+        Hooks.driver = driver;
+    }
+	//===========
 	@Before
 	public static void setUp(Scenario scenario) throws IOException {
 		htmlReporter = new ExtentSparkReporter("target/extent-report.html");
@@ -41,14 +48,25 @@ public class Hooks {
 	}
 
 	@After
-	public static void tearDown() throws InterruptedException {
+	public static void tearDown(Scenario scenario) throws InterruptedException {
 		Thread.sleep(5000);
+		//===========
+		
+		 if (scenario != null && scenario.isFailed()) {
+	            String screenshotName = scenario.getName().replaceAll(" ", "_");
+	            ScreenshotUtility.captureScreenshot(driver, screenshotName);
+	        }
+//		if (scenario.isFailed()) {
+//            String screenshotName = scenario.getName().replaceAll(" ", "_");
+//            ScreenshotUtility.captureScreenshot(driver, screenshotName);
+//        }
+		//===========
 		QuitAllBrowsers.quitAllBrowsers();
 		TestBase.driver.quit();
 		//		TestRunner.extent.addTestRunnerOutput("ext TEST1  \r\n");
 		extent.flush();
 		test.log(Status.INFO, "Driver is quit & extent is flushed ");
-		String newFileName = TestUtil2.renameFileWithTimestamp("target/extent-report.html");
+		String newFileName = RenameExtentWithTimestamp.renameFileWithTimestamp("target/extent-report.html");
 		Desktop desktop = Desktop.getDesktop();
 		File reportFile = new File(newFileName);
 		try {

@@ -19,8 +19,9 @@ import io.cucumber.java.en.When;
 
 public class LoginPageTest extends TestBase{
 	LoginPage loginPage;
-	HomePage homePage;
+	public static HomePage homePage;
 	TestBase testbase;
+	
 	public LoginPageTest(){
 		super();
 	}
@@ -64,8 +65,10 @@ public class LoginPageTest extends TestBase{
 		}
 	}
 	@Given("user validates login functionality")
-	public void loginTest(){
+//	public void loginTest(){
+	public HomePage loginTest(){
 		try {
+//			homePage = loginPage.login(prop.getProperty("username2"), prop.getProperty("password2"));
 			homePage = loginPage.login(prop.getProperty("username2"), prop.getProperty("password2"));
 			Hooks.test.log(Status.PASS, "loginTest passed ");
 		}
@@ -79,6 +82,7 @@ public class LoginPageTest extends TestBase{
 	    } catch (Exception e) {
 	        Hooks.test.log(Status.FAIL, "loginTest failed due to unexpected error: " + e.getMessage());
 	    }
+		return homePage;
 	}
 
 }

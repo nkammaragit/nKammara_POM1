@@ -6,3 +6,4 @@ Scenario: Check login is successful with valid credentials
 Given user validates login functionality
 #Given user searches employee details
 Given user lands to homepage
+Given user selects an item from Selenium dropdown

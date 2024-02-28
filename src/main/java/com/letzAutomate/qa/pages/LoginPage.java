@@ -1,6 +1,7 @@
 package com.letzAutomate.qa.pages;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -66,7 +67,7 @@ public class LoginPage extends TestBase{
 //		return new HomePage();
 //	}
 	
-	public HomePage login(String un, String pwd){
+	public HomePage login(String un, String pwd) {
 		try {
 		
 		username2.sendKeys(un);
@@ -76,10 +77,12 @@ public class LoginPage extends TestBase{
 		loginBtn2.click();
 		test.log(Status.INFO, "Login button clicked");
 		}
-		catch(Exception e) {
-	
-			test.log(Status.FAIL, e.getMessage());	
-		}
+     catch (TimeoutException te) {
+        test.log(Status.FAIL, "TimeoutException occurred: " + te.getMessage());
+    } catch (Exception e) {
+        test.log(Status.FAIL, "Exception occurred: " + e.getMessage());   
+    }
+    
 		return new HomePage();
 	}
 
