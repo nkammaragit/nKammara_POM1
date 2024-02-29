@@ -27,7 +27,6 @@ public class LoginPage extends TestBase{
 	@FindBy(xpath="//button[@name='SubmitLogin']")
 	WebElement loginBtn2;
 	
-	
 	//=====================ORANGE HRM=================================
 
 	//Page Factory - OR:
@@ -59,17 +58,9 @@ public class LoginPage extends TestBase{
 	public boolean validateCRMImage(){
 		return crmLogo.isDisplayed();
 	}
-
-//	public HomePage login(String un, String pwd){
-//		username.sendKeys(un);
-//		password.sendKeys(pwd);
-//		loginBtn.click();
-//		return new HomePage();
-//	}
 	
 	public HomePage login(String un, String pwd) {
 		try {
-		
 		username2.sendKeys(un);
 		test.log(Status.INFO, "username2 given");	
 		password2.sendKeys(pwd);
@@ -77,6 +68,7 @@ public class LoginPage extends TestBase{
 		loginBtn2.click();
 		test.log(Status.INFO, "Login button clicked");
 		}
+		
      catch (TimeoutException te) {
         test.log(Status.FAIL, "TimeoutException occurred: " + te.getMessage());
     } catch (Exception e) {

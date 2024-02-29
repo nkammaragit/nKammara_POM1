@@ -19,14 +19,14 @@ import io.cucumber.java.en.When;
 
 public class LoginPageTest extends TestBase{
 	LoginPage loginPage;
-	public static HomePage homePage;
-	TestBase testbase;
+	public static HomePage homePage; 
+	
 	
 	public LoginPageTest(){
 		super();
 	}
 
-	@Before
+	@Before  //Its a BeforeMethod in lab
 	public void setUp(){
 		TestBase.initialization();
 		loginPage = new LoginPage();	
@@ -57,9 +57,6 @@ public class LoginPageTest extends TestBase{
 			//		 Hooks.extent.addHooksOutput("ext TEST2 \r\n");
 			Hooks.test.log(Status.PASS, "validateCRMImage passed ");
 		}
-//		catch (SocketException e){
-//			Hooks.test.log(Status.FAIL, "SocketException");	
-//		}
 		catch (AssertionError e){
 			Hooks.test.log(Status.FAIL, "validateCRMImage failed");	
 		}

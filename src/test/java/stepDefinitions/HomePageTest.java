@@ -7,45 +7,45 @@ import io.cucumber.java.en.Given;
 
 public class HomePageTest extends TestBase{
 	//	LoginPage loginPage;
-//	HomePage homePage=LoginPageTest.homePage ;	
+	//	HomePage homePage=LoginPageTest.homePage ;	
 	HomePage homePage;
 	//	TestBase testbase;
-	
+
 	public HomePageTest(){
 		super();
 	}
 
 	@Before
 	public void setUp(){
-//		TestBase.initialization();
-//		homePage = new HomePage();	
-		
+		//		TestBase.initialization();
+		//		homePage = new HomePage();	
+
 	}
 
 	@Given("user lands to homepage")
 	public void verifyUserLandsToHomePage() {
 
-			if(LoginPageTest.homePage.verifyHomePagePostLogin())
+		if(LoginPageTest.homePage.verifyHomePagePostLogin())
 			Hooks.test.log(Status.PASS, "Home page appeared - Login success ");
-			else
+		else
 			Hooks.test.log(Status.FAIL, "Home page not appeared - Login Failed");	
 	}
-	
+
 	@Given("user selects an item from Selenium dropdown")
 	public void SelectItemFromSeleniumDropdown() throws InterruptedException {
-	
-			if(LoginPageTest.homePage.selectItemFromDropdown("selenium", "Selenium IDE Test")) {
+
+		if(LoginPageTest.homePage.selectItemFromDropdown("selenium", "Selenium IDE Test")) {
 			Hooks.test.log(Status.PASS, "Selected 'Selenium IDE Test' from Selenium dropdown list");}
-			else {
+		else {
 			Hooks.test.log(Status.FAIL, "Failed to selecte 'Selenium IDE Test' from Selenium dropdown list");}
-			
-			if(LoginPageTest.homePage.selectItemFromDropdown("selenium", 5)) {
-				Hooks.test.log(Status.PASS, "Selected 'Selenium IDE Test' from Selenium dropdown list");}
-				else {
-				Hooks.test.log(Status.FAIL, "Failed to selecte 'index' from Selenium dropdown list");}
-		
+
+//		if(LoginPageTest.homePage.selectItemFromDropdown("selenium", 5)) {
+//			Hooks.test.log(Status.PASS, "Selected 'Selenium IDE Test' from Selenium dropdown list");}
+//		else {
+//			Hooks.test.log(Status.FAIL, "Failed to selecte 'index' from Selenium dropdown list");}
+
 	}
-	
+
 	//=======================Orange HRM============================
 
 	@Given("user searches employee details")
