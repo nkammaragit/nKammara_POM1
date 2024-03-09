@@ -68,6 +68,11 @@ public class LoginPageTest extends TestBase{
 //			homePage = loginPage.login(prop.getProperty("username2"), prop.getProperty("password2"));
 			homePage = loginPage.login(prop.getProperty("username2"), prop.getProperty("password2"));
 			Hooks.test.log(Status.PASS, "loginTest passed ");
+			
+			   
+		    TestBase.logger.info("logger info");
+		    TestBase.logger.warn("logger warn");
+		    TestBase.logger.error("logger error");
 		}
 		
 	     catch (TimeoutException te) {

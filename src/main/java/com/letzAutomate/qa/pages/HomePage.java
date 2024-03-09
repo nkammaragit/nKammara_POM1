@@ -43,18 +43,20 @@ public class HomePage extends TestBase {
 	public boolean verifyHomePagePostLogin() {
 		System.out.println(driver.findElement(By.xpath("//h3[contains(text(),'Successfully Logged in')]")).isDisplayed());
 		return driver.findElement(By.xpath("//h3[contains(text(),'Successfully Logged in')]")).isDisplayed();
+	
 	}
 	public boolean selectItemFromDropdown(String dropdownName, Object itemToSelect) throws InterruptedException {
 		boolean status = false;
+		
+		TestBase.logger.info("Log4j info: Dropdown Selection***********************************");
+		
 		try {
 			switch(dropdownName) {
 			case "selenium":
-				
 				System.out.println( "linkTesting *** " + linkTesting.isDisplayed());
 				System.out.println("dropdownSelenium *** " + dropdownSelenium.isDisplayed());
 				dropdownSelenium.click();
 				itemGuru99.click();
-
 				//******This code is used to operate dropdown list to select either index or string*******
 				//			if (itemToSelect instanceof Integer) {
 				//	          int intValue = (Integer) itemToSelect;
