@@ -10,6 +10,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.letzAutomate.qa.base.TestBase;
 import com.letzAutomate.qa.util.ExtentManager;
+import com.letzAutomate.qa.util.SeleniumUtils;
 
 public class LoginPage extends TestBase{
 
@@ -46,32 +47,28 @@ public class LoginPage extends TestBase{
 	//Initializing the Page Objects:
 	public LoginPage(){
 		PageFactory.initElements(driver, this);
-		logger.info("****** LoginPage Constructor loaded ********");
+		logger.info("****** LoginPage Constructor loaded ");
 	}
 
 	public boolean login(String siteName, String un, String pwd) {
 		boolean loginStatus=false;
 		try {
 			if(siteName.equalsIgnoreCase("orangehrm")) {
-				username.sendKeys(un);
-				test.log(Status.INFO, "username is set");	
-				password.sendKeys(pwd);
-				test.log(Status.INFO, "password is set");
-				loginBtn.click();
-				test.log(Status.INFO, "Login button clicked");
-				logger.info("****** login credentials entered  ********");}
+				SeleniumUtils.setInputText(username,un);
+				SeleniumUtils.setInputText(password,pwd);
+				SeleniumUtils.clickElement(loginBtn);
+				logger.info("****** login credentials entered ");}
 
 			if(siteName.equalsIgnoreCase("guru99")) {
-				username2.sendKeys(un);
-				test.log(Status.INFO, "username2 given");	
-				password2.sendKeys(pwd);
-				test.log(Status.INFO, "password2 given");
-				loginBtn2.click();
-				test.log(Status.INFO, "Login button clicked");
-				logger.info("****** login credentials entered  ********");}
+				SeleniumUtils.setInputText(username2,un);
+				SeleniumUtils.setInputText(password2,pwd);
+				SeleniumUtils.clickElement(loginBtn2);
+				logger.info("****** login credentials entered ");}
 
 			if(HomePage.verifyHomePagePostLogin(siteName)) {
 				loginStatus = true;
+				logger.info("****** Home page of " + siteName + " is displayed ");
+
 			}
 		}
 

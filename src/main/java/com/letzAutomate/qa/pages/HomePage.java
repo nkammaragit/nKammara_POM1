@@ -13,6 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.letzAutomate.qa.base.TestBase;
 import com.letzAutomate.qa.util.DropdownUtil;
 import com.letzAutomate.qa.util.MiscUtils;
+import com.letzAutomate.qa.util.SeleniumUtils;
 public class HomePage extends TestBase {
 	private Map<String, WebElement> elementDdlMap = new HashMap<>();
 
@@ -24,11 +25,11 @@ public class HomePage extends TestBase {
 	WebElement itemGuru99;
 
 	@FindBy(xpath="//a[contains(text(),'Testing')]")
-	WebElement linkTesting ;
+	static WebElement linkTesting ;
 
 	//===================HomePage OrangeHRM=======================
 	@FindBy(xpath="//span[text()='Admin']")
-	WebElement linkAdmin ;
+	static WebElement linkAdmin ;
 
 	//Username input : 
 	@FindBy(xpath="//label[contains(text(),'Username')]/parent::div/parent::div//input[@class='oxd-input oxd-input--active']")
@@ -49,7 +50,7 @@ public class HomePage extends TestBase {
 	public HomePage(){
 		try {
 			PageFactory.initElements(driver, this);
-			logger.info("****** HomePage constructor loaded (PageFactory) ********");	
+			logger.info("****** HomePage constructor loaded (PageFactory) ");	
 		}
 		catch(InvalidSelectorException e) {
 			e.printStackTrace();
@@ -59,11 +60,14 @@ public class HomePage extends TestBase {
 	//=================Guru 99=====================
 	public static boolean verifyHomePagePostLogin(String siteName) {
 		boolean loginSuccess= false;
+		
 		if(siteName.equalsIgnoreCase("guru99")) {
-			loginSuccess = driver.findElement(By.xpath("//h3[contains(text(),'Successfully Logged in')]")).isDisplayed();
-		}
+			loginSuccess =SeleniumUtils.isElementDisplayed(linkTesting);}
+//			loginSuccess = driver.findElement(By.xpath("//h3[contains(text(),'Successfully Logged in')]")).isDisplayed();
+//		}
 		if(siteName.equalsIgnoreCase("orangehrm")) {
-			loginSuccess = driver.findElement(By.xpath("//span[text()='Admin']")).isDisplayed();
+			loginSuccess =SeleniumUtils.isElementDisplayed(linkAdmin);
+//			loginSuccess = driver.findElement(By.xpath("//span[text()='Admin']")).isDisplayed();
 		}
 		return loginSuccess;
 	}
@@ -73,21 +77,8 @@ public class HomePage extends TestBase {
 		elementDdlMap.put("dropdownStatus", dropdownStatus);
 		boolean status = false;
 		try {
-			switch(itemToSelect) {
-			case "selenium":
-				dropdownSelenium.click();
-				itemGuru99.click();
-				status = true;
-				break;
-			default:
-				if(MiscUtils.isInteger(itemToSelect)) {
-					status = DropdownUtil.selectOptionFromDropdown(Integer.parseInt(itemToSelect),elementDdlMap.get(weDropdown) );
-				}
-				else {
-					status = DropdownUtil.selectOptionFromDropdown(itemToSelect,elementDdlMap.get(weDropdown));
-				}
-				break;
-			}}
+			DropdownUtil.selectItemFromDDL(itemToSelect,elementDdlMap.get(weDropdown) );
+		}
 		catch (NoSuchElementException e) {
 			e.getMessage();
 		}
@@ -96,5 +87,19 @@ public class HomePage extends TestBase {
 	//===============Orange HRM=======================
 	public String verifyHomePageTitle(){
 		return driver.getTitle();
+	}
+	
+	public boolean searchSystemUserInOrangeHrm(String itemToSelect, String weDropdown) throws InterruptedException {
+		elementDdlMap.put("dropdownSelenium", dropdownSelenium);
+		elementDdlMap.put("dropdownUserRole", dropdownUserRole);
+		elementDdlMap.put("dropdownStatus", dropdownStatus);
+		boolean status = false;
+		try {
+			DropdownUtil.selectItemFromDDL(itemToSelect,elementDdlMap.get(weDropdown) );
+		}
+		catch (NoSuchElementException e) {
+			e.getMessage();
+		}
+		return status;
 	}
 }

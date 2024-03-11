@@ -10,7 +10,7 @@ public class LoginPageTest extends TestBase{
 		super();
 		TestBase.initialization();
 		loginPage = new LoginPage();
-		logger.info("****** LoginPageTest Constructor loaded ********");
+		logger.info("****** LoginPageTest Constructor loaded ");
 	}
 
 	@Given ("user validates login functionality of {string}")
@@ -20,11 +20,11 @@ public class LoginPageTest extends TestBase{
 		if(siteName.equalsIgnoreCase("guru99")) {userName="unameGuru"; password= "pwdGuru";}
 		if(loginPage.login(siteName,prop.getProperty(userName), prop.getProperty(password))){
 			Hooks.test.log(Status.PASS, "loginTest passed");
-			logger.info("****** loginTest passed ********");
+			logger.info("****** loginTest passed ");
 		}
 		else {
 			Hooks.test.log(Status.FAIL, "loginTest Failed");
-			logger.error("****** loginTest Failed ********");	
+			logger.error("****** loginTest Failed ");	
 		}
 	}
 }
