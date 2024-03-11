@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="12.183" tests="1" skipped="0" failures="0" errors="0">
-<testcase classname="Feature to test login functionality" name="Check login is successful with valid credentials" time="12.012">
+<testsuite name="Cucumber" time="33.992" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="Feature to test login functionality" name="Check login is successful with valid credentials" time="33.808">
 <system-out><![CDATA[
-Given user validates login functionality....................................passed
-Given user lands to homepage................................................passed
-Given user selects an item from Selenium dropdown...........................passed
+Given user validates login functionality of "OrangeHRM".....................passed
+Given user selects an item from dropdown "selenium" from "dropdownSelenium".passed
 ]]></system-out>
 </testcase>
 </testsuite>
