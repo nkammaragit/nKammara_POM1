@@ -1,6 +1,8 @@
 package com.letzAutomate.qa.pages;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -68,7 +70,7 @@ public class LoginPage extends TestBase{
 			if(HomePage.verifyHomePagePostLogin(siteName)) {
 				loginStatus = true;
 				logger.info("****** Home page of " + siteName + " is displayed ");
-
+				test.log(Status.INFO, "HomePage displayed");
 			}
 		}
 
@@ -79,4 +81,7 @@ public class LoginPage extends TestBase{
 		}
 		return loginStatus;
 	}
+	
+	
+
 }

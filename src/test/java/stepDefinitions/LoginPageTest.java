@@ -9,7 +9,6 @@ public class LoginPageTest extends TestBase{
 	public LoginPageTest(){
 		super();
 		TestBase.initialization();
-		loginPage = new LoginPage();
 		logger.info("****** LoginPageTest Constructor loaded ");
 	}
 
@@ -25,6 +24,7 @@ public class LoginPageTest extends TestBase{
 		else {
 			Hooks.test.log(Status.FAIL, "loginTest Failed");
 			logger.error("****** loginTest Failed ");	
+//			System.exit(0);
 		}
 	}
 }

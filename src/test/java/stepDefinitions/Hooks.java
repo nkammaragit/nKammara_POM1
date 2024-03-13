@@ -21,7 +21,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 
-public class Hooks {
+public class Hooks extends TestBase {
 
 	public static ExtentReports extent;
 	public static ExtentSparkReporter htmlReporter;
@@ -29,10 +29,6 @@ public class Hooks {
 	public static TestBase testbase= new TestBase();
 	public static Scenario scenario;
 	public static WebDriver driver;
-
-	public Hooks(WebDriver driver) {
-		Hooks.driver = driver;
-	}
 
 	@Before
 	public static void setUp(Scenario scenario) throws IOException {
@@ -47,20 +43,16 @@ public class Hooks {
 
 	@After
 	public static void tearDown(Scenario scenario) throws InterruptedException {
-		Thread.sleep(5000);
 		if (scenario != null && scenario.isFailed()) {
 			String screenshotName = scenario.getName().replaceAll(" ", "_");
 			ScreenshotUtility.captureScreenshot(driver, screenshotName);
 		}
-		//		if (scenario.isFailed()) {
-		//            String screenshotName = scenario.getName().replaceAll(" ", "_");
-		//            ScreenshotUtility.captureScreenshot(driver, screenshotName);
-		//        }
 		QuitAllBrowsers.quitAllBrowsers();
 		TestBase.driver.quit();
 		//		TestRunner.extent.addTestRunnerOutput("ext TEST1  \r\n");
-		extent.flush();
 		test.log(Status.INFO, "Driver is quit & extent is flushed ");
+		extent.flush();
+		
 		String newFileName = RenameExtentWithTimestamp.renameFileWithTimestamp("target/extent-report.html");
 		Desktop desktop = Desktop.getDesktop();
 		File reportFile = new File(newFileName);

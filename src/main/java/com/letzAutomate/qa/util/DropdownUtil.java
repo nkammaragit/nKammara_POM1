@@ -26,7 +26,7 @@ public class DropdownUtil extends TestBase {
 	// Select Item by visibleText
 	public static boolean selectOptionFromDropdown(String visibleText,WebElement dropdownElement) throws InterruptedException {
 		try {
-			Thread.sleep(5000);
+//			Thread.sleep(5000);
 			Select dropdown = new Select(dropdownElement);
 			dropdown.selectByVisibleText(visibleText); 
 			return true;
@@ -39,7 +39,7 @@ public class DropdownUtil extends TestBase {
 	// Select Item by id
 	public static boolean selectOptionFromDropdown(int index, WebElement dropdownElement ) {
 		try {
-			Thread.sleep(5000);
+//			Thread.sleep(5000);
 			Select dropdown = new Select(dropdownElement);
 			dropdown.selectByIndex(index);
 			return true;
