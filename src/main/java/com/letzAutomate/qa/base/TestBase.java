@@ -1,7 +1,6 @@
 package com.letzAutomate.qa.base;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
@@ -15,10 +14,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 //import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.aventstack.extentreports.ExtentTest;
 import com.letzAutomate.qa.pages.HomePage;
 import com.letzAutomate.qa.pages.LoginPage;
-import com.letzAutomate.qa.util.ExtentManager;
 import com.letzAutomate.qa.util.SeleniumUtils;
 //import com.letzAutomate.qa.util.Log4jConfig;
 import com.letzAutomate.qa.util.StaticVariables;

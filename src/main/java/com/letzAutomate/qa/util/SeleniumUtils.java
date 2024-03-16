@@ -59,7 +59,6 @@ public class SeleniumUtils extends TestBase{
 			Select select = new Select(dropdownElement);
 			select.selectByVisibleText(visibleText); 
 			logger.info("****** Dropdown selected by visible text: " + visibleText);
-
 			return true;
 		}
 		catch(Exception e) {
@@ -80,28 +79,7 @@ public class SeleniumUtils extends TestBase{
 			return false;
 		}
 	}
-	
-//	public static void selectDropdownByVisibleText(WebElement dropdown, String visibleText) {
-//		try {
-//			Select select = new Select(dropdown);
-//			select.selectByVisibleText(visibleText);
-//			logger.info("****** Dropdown selected by visible text: " + visibleText);
-//		} catch (NoSuchElementException e) {
-//			logger.error("****** Failed to select dropdown by visible text: " + visibleText + " - " + e.getMessage());
-//			e.printStackTrace();
-//		}
-//	}
-//
-//	public static void selectDropdownByIndex(WebElement dropdown, int index) {
-//		try {
-//			Select select = new Select(dropdown);
-//			select.selectByIndex(index);
-//			logger.info("****** Dropdown selected by index: " + index);
-//		} catch (NoSuchElementException e) {
-//			logger.error("****** Failed to select dropdown by index: " + index + " - " + e.getMessage());
-//			e.printStackTrace();
-//		}
-//	}
+
 	
 	public static boolean selectDropdown(WebElement weDropdown,String itemToSelect) {
 		boolean status= false;
@@ -160,12 +138,9 @@ public class SeleniumUtils extends TestBase{
 	public static void handleAlert() {
         String alertText = null;
         try {
-            // Switch to the alert
             Alert alert = driver.switchTo().alert();
-            // Get the text of the alert
             alertText = alert.getText();
             System.out.println("Alert Text: " + alertText);
-            // Accept the alert (click on the 'OK' button)
             alert.accept();
         } catch (Exception e) {
             // Handle exceptions if the alert doesn't exist or any other issue

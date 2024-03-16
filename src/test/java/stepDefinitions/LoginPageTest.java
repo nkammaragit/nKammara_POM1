@@ -17,6 +17,7 @@ public class LoginPageTest extends TestBase{
 		String userName=null, password=null ;
 		if(siteName.equalsIgnoreCase("orangehrm")) {userName="unameOrange"; password= "pwdOrange";}
 		if(siteName.equalsIgnoreCase("guru99")) {userName="unameGuru"; password= "pwdGuru";}
+		
 		if(loginPage.login(siteName,prop.getProperty(userName), prop.getProperty(password))){
 			Hooks.test.log(Status.PASS, "loginTest passed");
 			logger.info("****** loginTest passed ");
@@ -24,7 +25,6 @@ public class LoginPageTest extends TestBase{
 		else {
 			Hooks.test.log(Status.FAIL, "loginTest Failed");
 			logger.error("****** loginTest Failed ");	
-//			System.exit(0);
 		}
 	}
 }

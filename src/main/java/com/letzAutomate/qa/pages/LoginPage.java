@@ -1,8 +1,5 @@
 package com.letzAutomate.qa.pages;
 
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,36 +17,36 @@ public class LoginPage extends TestBase{
 	//=====================GURU 99=================================
 
 	@FindBy(xpath="//input[@name='email']")
-	WebElement username2;
+	private WebElement username2;
 
 	@FindBy(xpath="//input[@name='passwd']")
-	WebElement password2;
+	private WebElement password2;
 
 	@FindBy(xpath="//button[@name='SubmitLogin']")
-	WebElement loginBtn2;
+	private WebElement loginBtn2;
 
 	//=====================ORANGE HRM=================================
 
 	//Page Factory - OR:
 	@FindBy(name="username")
-	WebElement username;
+	private WebElement username;
 
 	@FindBy(name="password")
-	WebElement password;
+	private WebElement password;
 
 	@FindBy(xpath="//button[@type='submit']")
-	WebElement loginBtn;
+	private WebElement loginBtn;
 
 	@FindBy(xpath="//button[contains(text(),'Sign Up')]")
-	WebElement signUpBtn;
+	private WebElement signUpBtn;
 
 	@FindBy(xpath="//div[contains(@class,'orangehrm-login-logo-mobile')]//img")
-	WebElement crmLogo;
+	private WebElement crmLogo;
 
 	//Initializing the Page Objects:
 	public LoginPage(){
 		PageFactory.initElements(driver, this);
-		logger.info("****** LoginPage Constructor loaded ");
+		logger.info("****** LoginPage PageFactory.initElements loaded ");
 	}
 
 	public boolean login(String siteName, String un, String pwd) {
@@ -59,7 +56,11 @@ public class LoginPage extends TestBase{
 				SeleniumUtils.setInputText(username,un);
 				SeleniumUtils.setInputText(password,pwd);
 				SeleniumUtils.clickElement(loginBtn);
-				logger.info("****** login credentials entered ");}
+				logger.info("****** login credentials entered ");
+				
+				if(SeleniumUtils.isAlertPresent()) SeleniumUtils.handleAlert();
+				
+				}
 
 			if(siteName.equalsIgnoreCase("guru99")) {
 				SeleniumUtils.setInputText(username2,un);

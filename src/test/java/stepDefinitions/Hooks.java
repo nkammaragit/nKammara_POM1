@@ -26,7 +26,7 @@ public class Hooks extends TestBase {
 	public static ExtentReports extent;
 	public static ExtentSparkReporter htmlReporter;
 	public static ExtentTest test;
-	public static TestBase testbase= new TestBase();
+//	public static TestBase testbase= new TestBase();
 	public static Scenario scenario;
 	public static WebDriver driver;
 
@@ -48,7 +48,7 @@ public class Hooks extends TestBase {
 			ScreenshotUtility.captureScreenshot(driver, screenshotName);
 		}
 		QuitAllBrowsers.quitAllBrowsers();
-		TestBase.driver.quit();
+		 if (driver != null) driver.quit();
 		//		TestRunner.extent.addTestRunnerOutput("ext TEST1  \r\n");
 		test.log(Status.INFO, "Driver is quit & extent is flushed ");
 		extent.flush();
