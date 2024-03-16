@@ -32,7 +32,8 @@ public class HomePage extends TestBase {
 	static WebElement linkTesting ;
 
 	//===================HomePage OrangeHRM=======================
-	@FindBy(xpath="//span[text()='Admin']")
+//	@FindBy(xpath="//span[text()='Admin.*']")
+	@FindBy(xpath="(//span[contains(normalize-space(), 'Admin')])[1]")
 	static WebElement linkAdmin ;
 
 	//Username input : 
@@ -72,20 +73,6 @@ public class HomePage extends TestBase {
 		if(siteName.equalsIgnoreCase("orangehrm")) {
 			loginSuccess =SeleniumUtils.isElementDisplayed(linkAdmin);}
 		return loginSuccess;
-	}
-	
-	public boolean selectItemFromDropdown(String weDropdown,String itemToSelect) throws InterruptedException {
-		elementDdlMap.put("dropdownSelenium", dropdownSelenium);
-		elementDdlMap.put("dropdownUserRole", dropdownUserRole);
-		elementDdlMap.put("dropdownStatus", dropdownStatus);
-		boolean status = false;
-		try {
-			SeleniumUtils.selectDropdown(elementDdlMap.get(weDropdown),itemToSelect);
-		}
-		catch (NoSuchElementException e) {
-			e.getMessage();
-		}
-		return status;
 	}
 	//===============Orange HRM=======================
 	public String verifyHomePageTitle(){

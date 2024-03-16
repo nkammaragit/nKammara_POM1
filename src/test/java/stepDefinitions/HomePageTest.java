@@ -10,15 +10,6 @@ public class HomePageTest extends TestBase{
 		logger.info("****** HomePageTest Constructor loaded ");
 	}
 
-	@Given("user selects an item from dropdown {string} from {string}")
-	public void userSelectsItemFromDropdown(String itemToSelect, String weDropdown) throws InterruptedException {
-		if(homePage.selectItemFromDropdown(itemToSelect, weDropdown)) {
-			Hooks.test.log(Status.PASS, "SelectItemFromSeleniumDropdown Passed - item '" + itemToSelect + "' selected");
-			logger.info("****** SelectItemFromSeleniumDropdown Passed - item '" + itemToSelect + "' selected ");}
-		else {
-			Hooks.test.log(Status.FAIL, "SelectItemFromSeleniumDropdown Failed - item '" + itemToSelect + "' Not selected ");
-			logger.error("****** SelectItemFromSeleniumDropdown Failed - item '" + itemToSelect + "' Not selected ");}
-	}
 	//=======================Orange HRM============================
 	@Given("user searches employee details {string} {string} {string} {string}")
 	//   @Test

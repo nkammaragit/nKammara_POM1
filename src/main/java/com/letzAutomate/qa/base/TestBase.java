@@ -28,13 +28,16 @@ public class TestBase {
 	public static HomePage homePage;
 	public static LoginPage loginPage;
 	public static SeleniumUtils seleniumUtils;
+	public static String testResources="\\src\\test\\resources\\";
 //	public static ExtentTest test = ExtentManager.getExtentTest();
 
 
 	public TestBase(){
 		try {
 			prop = new Properties();
-			FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\resources\\config.properties");
+			FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+testResources+"config\\config.properties");
+//			FileInputStream ip = new FileInputStream("/src/test/resources/config/config.properties");
+
 			prop.load(ip);
 			logger.info("****** TestBase config.prop has been loaded ");
 		} catch (IOException  io) {
@@ -46,7 +49,7 @@ public class TestBase {
 		try {
 		
 			prop = new Properties();
-			FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\resources\\config.properties");
+			FileInputStream ip = new FileInputStream(System.getProperty("user.dir")+testResources+"config\\config.properties");
 			prop.load(ip);
 			logger.info("****** TestBase config.prop has been loaded ");
 
@@ -54,12 +57,13 @@ public class TestBase {
 		
 			String browserName = prop.getProperty("browser");
 			if(browserName.equals("chrome")){
-				System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\src\\test\\resources\\chromedriver.exe") ;
+//				System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"\\src\\test\\resources\\chromedriver.exe") ;
+				System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+testResources + "drivers\\chromedriver.exe") ;
 				driver = new ChromeDriver(); 
 				logger.info("****** TestBase initialization (Chrome driver set up done) ");
 			}
 			else if(browserName.equals("FF")){
-				System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+"\\src\\test\\resources\\geckodriver");	
+				System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+testResources + "drivers\\geckodriver");	
 				driver = new FirefoxDriver(); 
 				logger.info("****** TestBase initialization (Firefox driver set up done) ");
 			}
