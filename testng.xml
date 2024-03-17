@@ -5,11 +5,9 @@
     <classes>
        <class name="stepDefinitions.TestRunner"/>
     </classes>
-    
-  </test> <!-- Test -->
+  </test>
   
   <listeners>
         <listener class-name="com.letzAutomate.qa.util.CustomListener"/>
     </listeners>
-    
-</suite> <!-- Suite -->
+</suite>

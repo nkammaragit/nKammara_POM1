@@ -13,7 +13,7 @@ import com.letzAutomate.qa.util.SeleniumUtils;
 
 public class LoginPage extends TestBase{
 
-	ExtentTest test = ExtentManager.getExtentTest();
+//	ExtentTest test = ExtentManager.getExtentTest();
 	//=====================GURU 99=================================
 
 	@FindBy(xpath="//input[@name='email']")

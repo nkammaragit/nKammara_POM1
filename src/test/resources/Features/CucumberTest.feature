@@ -8,8 +8,8 @@ Given user searches employee details "Admin" "Admin" "Bob Tester" "Enabled"
 Examples:
 |LoginPortal|
 |OrangeHRM|
-|OrangeHRM|
-|OrangeHRM|
+#|OrangeHRM|
+#|OrangeHRM|
 
 #Given user validates login functionality of "Guru99"
 #Given user selects an item from dropdown "selenium" from "dropdownSelenium"

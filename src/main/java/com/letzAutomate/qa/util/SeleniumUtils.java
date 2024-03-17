@@ -6,9 +6,10 @@ import com.letzAutomate.qa.base.TestBase;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 
 public class SeleniumUtils extends TestBase{
-	
+
 	public static void clickElement(WebElement element) {
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(element)).click();
@@ -53,7 +54,7 @@ public class SeleniumUtils extends TestBase{
 			e.printStackTrace();
 		}
 	}
-//Select by visible text
+	//Select by visible text
 	public static boolean selectOptionFromDropdown(String visibleText,WebElement dropdownElement) throws InterruptedException {
 		try {
 			Select select = new Select(dropdownElement);
@@ -80,11 +81,11 @@ public class SeleniumUtils extends TestBase{
 		}
 	}
 
-	
+
 	public static boolean selectDropdown(WebElement weDropdown,String itemToSelect) {
 		boolean status= false;
 		try {
-			if(MiscUtils.isInteger(itemToSelect)) {
+			if(CommonUtils.isInteger(itemToSelect)) {
 				status = selectOptionFromDropdown(Integer.parseInt(itemToSelect),weDropdown );
 			}
 			else {
@@ -125,55 +126,72 @@ public class SeleniumUtils extends TestBase{
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static boolean isElementDisplayed(WebElement element) {
-        try {
-            return element.isDisplayed();
-        } catch (NoSuchElementException | ElementNotInteractableException e) {
-            logger.error("****** Element is not displayed: " + element.toString() + " - " + e.getMessage());
-            return false;
-        }
-    }
-	
+		try {
+			return element.isDisplayed();
+		} catch (NoSuchElementException | ElementNotInteractableException e) {
+			logger.error("****** Element is not displayed: " + element.toString() + " - " + e.getMessage());
+			return false;
+		}
+	}
+
 	public static void handleAlert() {
-        String alertText = null;
-        try {
-            Alert alert = driver.switchTo().alert();
-            alertText = alert.getText();
-            System.out.println("Alert Text: " + alertText);
-            alert.accept();
-        } catch (Exception e) {
-            // Handle exceptions if the alert doesn't exist or any other issue
-            e.printStackTrace();
-        }
-//        return alertText;
-    }
-	
-	     public static boolean isAlertPresent() {
-	        try {
-	            driver.switchTo().alert();
-	            return true;
-	        } catch (NoAlertPresentException e) {
-	            return false;
+		String alertText = null;
+		try {
+			Alert alert = driver.switchTo().alert();
+			alertText = alert.getText();
+			System.out.println("Alert Text: " + alertText);
+			alert.accept();
+		} catch (Exception e) {
+			// Handle exceptions if the alert doesn't exist or any other issue
+			e.printStackTrace();
+		}
+		//        return alertText;
+	}
+
+	public static boolean isAlertPresent() {
+		try {
+			driver.switchTo().alert();
+			return true;
+		} catch (NoAlertPresentException e) {
+			return false;
+		}
+	}
+
+	//Handling div (non standard) dropdowns 
+	//	     public static void handleDivDropdown(WebElement dropdownElement, WebElement optionElement) {
+	//	         // Click on the dropdown to open it
+	//	         dropdownElement.click();
+	//	         // Click on the option to select it
+	//	         optionElement.click();
+	//	         dropdownElement.sendKeys();
+	//	     }
+
+	public static void handleDivDropdown(WebElement dropdownElement, WebElement optionElement) {
+		driver.findElement(By.name("JDK")).click();
+		List<WebElement> allOptions = driver.findElements(By.xpath("//select[@name='JDK']//option"));
+		System.out.println(allOptions.size());                                           
+		for(int i = 0; i<=allOptions.size()-1; i++) {
+			if(allOptions.get(i).getText().contains("JDK 1.8")) {
+				allOptions.get(i).click();
+				break;
+			}
+		}
+	}
+
+	public static void quitAllBrowsers() {
+		  // Set implicit wait to handle timing issues
+ 		 Set<String> windowHandles = driver.getWindowHandles();
+	        for (String handle : windowHandles) {
+	            try {
+	                driver.switchTo().window(handle);
+	                driver.close();
+	            } catch (Exception e) {
+	                // Handle any exceptions, such as the window already closed
+	                System.out.println("Exception occurred while closing window with handle: " + handle);
+	            }
 	        }
-	    }
-	     
-	     //Handling div (non standard) dropdowns 
-//	     public static void handleDivDropdown(WebElement dropdownElement, WebElement optionElement) {
-//	         // Click on the dropdown to open it
-//	         dropdownElement.click();
-//	         // Click on the option to select it
-//	         optionElement.click();
-//	         dropdownElement.sendKeys();
-//	     }
-	
-	     public static void handleDivDropdown(WebElement dropdownElement, WebElement optionElement) {
-	     driver.findElement(By.name("JDK")).click();
-	        List<WebElement> allOptions = driver.findElements(By.xpath("//select[@name='JDK']//option"));
-	        System.out.println(allOptions.size());                                           
-	        for(int i = 0; i<=allOptions.size()-1; i++) {
-	             if(allOptions.get(i).getText().contains("JDK 1.8")) {
-	                    allOptions.get(i).click();
-	                break;
-	             }
-}}}
+	        driver.quit();
+  }
+}

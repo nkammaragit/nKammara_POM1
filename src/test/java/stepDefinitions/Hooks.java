@@ -13,9 +13,10 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.letzAutomate.qa.base.TestBase;
 import com.letzAutomate.qa.pages.LoginPage;
 import com.letzAutomate.qa.util.ExtentManager;
-import com.letzAutomate.qa.util.QuitAllBrowsers;
+//import com.letzAutomate.qa.util.QuitAllBrowsers;
 import com.letzAutomate.qa.util.RenameExtentWithTimestamp;
 import com.letzAutomate.qa.util.ScreenshotUtility;
+import com.letzAutomate.qa.util.SeleniumUtils;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -47,7 +48,8 @@ public class Hooks extends TestBase {
 			String screenshotName = scenario.getName().replaceAll(" ", "_");
 			ScreenshotUtility.captureScreenshot(driver, screenshotName);
 		}
-		QuitAllBrowsers.quitAllBrowsers();
+//		QuitAllBrowsers.quitAllBrowsers();
+		SeleniumUtils.quitAllBrowsers();
 		 if (driver != null) driver.quit();
 		//		TestRunner.extent.addTestRunnerOutput("ext TEST1  \r\n");
 		test.log(Status.INFO, "Driver is quit & extent is flushed ");
