@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="21.322" tests="1" skipped="0" failures="0" errors="0">
-<testcase classname="Feature to test login functionality" name="Check login is successful with valid credentials - Example #1.1" time="21.146">
+<testsuite name="Cucumber" time="20.923" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="Feature to test login functionality" name="Check login is successful with valid credentials - Example #1.1" time="20.746">
 <system-out><![CDATA[
 Given user validates login functionality of "OrangeHRM".....................passed
 Given user searches employee details "Admin" "Admin" "Bob Tester" "Enabled".passed

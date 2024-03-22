@@ -82,14 +82,14 @@ public class HomePage extends TestBase {
 	public boolean searchSystemUserInOrangeHrm(String UserName, String UserRole, String EmployeeName, String empStatus) throws InterruptedException{
 		boolean status = false;
 		try {
-			SeleniumUtils.clickElement(linkAdmin);
-			SeleniumUtils.setInputText(inputUserName,UserRole);
-			//		SeleniumUtils.selectDropdown(dropdownUserRole,UserRole);
-//			SeleniumUtils.setInputText(inputEmployeeName,EmployeeName);
-			//		SeleniumUtils.selectDropdown(dropdownStatus,empStatus);
-			SeleniumUtils.clickElement(btnSearch);
+			if(! SeleniumUtils.clickElement(linkAdmin) ) {return false;}
+			else if(! SeleniumUtils.setInputText(inputUserName,UserRole)) {return false;}
+			else if(SeleniumUtils.clickElement(btnSearch)) {
 			test.log(Status.INFO, "Search system user is done ");
 			status= true;}
+			else {return false;}
+			
+		}
 		catch (NoSuchElementException | ElementNotInteractableException e) {
 			e.getMessage();
 		}	

@@ -12,10 +12,11 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.letzAutomate.qa.base.TestBase;
 import com.letzAutomate.qa.pages.LoginPage;
+import com.letzAutomate.qa.util.CommonUtils;
 import com.letzAutomate.qa.util.ExtentManager;
 //import com.letzAutomate.qa.util.QuitAllBrowsers;
-import com.letzAutomate.qa.util.RenameExtentWithTimestamp;
-import com.letzAutomate.qa.util.ScreenshotUtility;
+//import com.letzAutomate.qa.util.RenameExtentWithTimestamp;
+//import com.letzAutomate.qa.util.ScreenshotUtility;
 import com.letzAutomate.qa.util.SeleniumUtils;
 
 import io.cucumber.java.After;
@@ -46,7 +47,7 @@ public class Hooks extends TestBase {
 	public static void tearDown(Scenario scenario) throws InterruptedException {
 		if (scenario != null && scenario.isFailed()) {
 			String screenshotName = scenario.getName().replaceAll(" ", "_");
-			ScreenshotUtility.captureScreenshot(driver, screenshotName);
+			SeleniumUtils.captureScreenshot(driver, screenshotName);
 		}
 //		QuitAllBrowsers.quitAllBrowsers();
 		SeleniumUtils.quitAllBrowsers();
@@ -55,7 +56,7 @@ public class Hooks extends TestBase {
 		test.log(Status.INFO, "Driver is quit & extent is flushed ");
 		extent.flush();
 		
-		String newFileName = RenameExtentWithTimestamp.renameFileWithTimestamp("target/extent-report.html");
+		String newFileName = CommonUtils.renameFileWithTimestamp("target/extent-report.html");
 		Desktop desktop = Desktop.getDesktop();
 		File reportFile = new File(newFileName);
 		try {
