@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.letzAutomate.qa.base.TestBase;
+import com.letzAutomate.qa.util.CommonUtils;
 import com.letzAutomate.qa.util.ExtentManager;
 import com.letzAutomate.qa.util.SeleniumUtils;
 
@@ -54,24 +55,28 @@ public class LoginPage extends TestBase{
 		try {
 			if(siteName.equalsIgnoreCase("orangehrm")) {
 				SeleniumUtils.setInputText(username,un);
+				CommonUtils.waitInSeconds(5);
 				SeleniumUtils.setInputText(password,pwd);
+				CommonUtils.waitInSeconds(5);
 				SeleniumUtils.clickElement(loginBtn);
 				logger.info("****** login credentials entered ");
-				
+
 				if(SeleniumUtils.isAlertPresent()) SeleniumUtils.handleAlert();
 				
 				}
 
 			if(siteName.equalsIgnoreCase("guru99")) {
 				SeleniumUtils.setInputText(username2,un);
+				CommonUtils.waitInSeconds(5);
 				SeleniumUtils.setInputText(password2,pwd);
+				CommonUtils.waitInSeconds(5);
 				SeleniumUtils.clickElement(loginBtn2);
 				logger.info("****** login credentials entered ");}
 
 			if(HomePage.verifyHomePagePostLogin(siteName)) {
 				loginStatus = true;
-				logger.info("****** Home page of " + siteName + " is displayed ");
-				test.log(Status.INFO, "HomePage displayed");
+				logger.info(siteName + " - Home page is displayed ");
+				test.log(Status.INFO, siteName + " - Home page is displayed ");
 			}
 		}
 

@@ -1,4 +1,4 @@
-package stepDefinitions;
+package stepdefinitions;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -14,9 +14,6 @@ import com.letzAutomate.qa.base.TestBase;
 import com.letzAutomate.qa.pages.LoginPage;
 import com.letzAutomate.qa.util.CommonUtils;
 import com.letzAutomate.qa.util.ExtentManager;
-//import com.letzAutomate.qa.util.QuitAllBrowsers;
-//import com.letzAutomate.qa.util.RenameExtentWithTimestamp;
-//import com.letzAutomate.qa.util.ScreenshotUtility;
 import com.letzAutomate.qa.util.SeleniumUtils;
 
 import io.cucumber.java.After;

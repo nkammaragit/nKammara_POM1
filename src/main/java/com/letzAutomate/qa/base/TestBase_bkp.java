@@ -20,8 +20,11 @@ import com.letzAutomate.qa.pages.HomePage;
 import com.letzAutomate.qa.pages.LoginPage;
 import com.letzAutomate.qa.util.ExtentManager;
 import com.letzAutomate.qa.util.SeleniumUtils;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 //import com.letzAutomate.qa.util.Log4jConfig;
-import com.letzAutomate.qa.util.StaticVariables;
+import com.letzAutomate.qa.util.Constants;
 
 public class TestBase_bkp {
 	public static WebDriver driver;
@@ -56,8 +59,9 @@ public class TestBase_bkp {
 
 			String browserName = prop.getProperty("browser");
 			if(browserName.equals("chrome")){
-				System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+testResources + "drivers\\chromedriver.exe") ;
-				driver = new ChromeDriver(); 
+//				System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+testResources + "drivers\\chromedriver.exe") ;
+//				driver = new ChromeDriver();
+				WebDriverManager.chromedriver().setup();
 				logger.info("****** TestBase initialization (Chrome driver set up done) ");
 			}
 			else if(browserName.equals("FF")){
@@ -68,8 +72,8 @@ public class TestBase_bkp {
 
 			driver.manage().window().maximize();
 			driver.manage().deleteAllCookies();
-			driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(StaticVariables.PAGELOAD_TIMEOUT));
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(StaticVariables.PAGELOAD_TIMEOUT));
+			driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Constants.PAGELOAD_TIMEOUT));
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Constants.PAGELOAD_TIMEOUT));
 			wait = new WebDriverWait(driver,Duration.ofSeconds(1));
 			driver.get(prop.getProperty("urlOrange"));
 			//driver.get(prop.getProperty("urlGuru"));

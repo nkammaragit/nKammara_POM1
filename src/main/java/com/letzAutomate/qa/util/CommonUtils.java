@@ -128,5 +128,12 @@ public class CommonUtils {
                 e.printStackTrace();
             }
         }
+     
+        //Wait till the given amount of time is elapsed
+        public static void waitInSeconds(int seconds) throws InterruptedException {
+        	if(seconds<=0) throw new IllegalArgumentException("Seconds must be positive");
+        		long milliSeconds= seconds * 1000L;
+        		Thread.sleep(milliSeconds);
+        }
         
 }

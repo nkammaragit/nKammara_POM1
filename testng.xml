@@ -3,11 +3,11 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-       <class name="stepDefinitions.TestRunner"/>
+       <class name="runner.TestRunner"/>
     </classes>
   </test>
   
-  <listeners>
+  <!-- <listeners>
         <listener class-name="com.letzAutomate.qa.util.CustomListener"/>
-    </listeners>
+    </listeners> -->
 </suite>

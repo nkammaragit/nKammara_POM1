@@ -85,7 +85,7 @@ public class HomePage extends TestBase {
 			if(! SeleniumUtils.clickElement(linkAdmin) ) {return false;}
 			else if(! SeleniumUtils.setInputText(inputUserName,UserRole)) {return false;}
 			else if(SeleniumUtils.clickElement(btnSearch)) {
-			test.log(Status.INFO, "Search system user is done ");
+			test.log(Status.INFO, "Search system user is complete ");
 			status= true;}
 			else {return false;}
 			

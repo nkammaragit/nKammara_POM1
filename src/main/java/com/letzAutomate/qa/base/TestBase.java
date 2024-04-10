@@ -18,7 +18,7 @@ import com.letzAutomate.qa.pages.LoginPage;
 import com.letzAutomate.qa.util.CommonUtils;
 import com.letzAutomate.qa.util.ExtentManager;
 import com.letzAutomate.qa.util.SeleniumUtils;
-import com.letzAutomate.qa.util.StaticVariables;
+import com.letzAutomate.qa.util.Constants;
 
 public class TestBase {
     public static WebDriver driver;
@@ -49,7 +49,7 @@ public class TestBase {
             SeleniumUtils.navigateToUrl(prop.getProperty("url"));
             instantiatePages();
             logger.info("TestBase initialization done");
-            test.log(Status.INFO, "TestBase initialization done");
+            test.log(Status.INFO, "TestBase initialization complete");
         } catch (Exception e) {
             test.log(Status.FAIL, "TestBase Initialization Failed - " + e.getMessage());
 

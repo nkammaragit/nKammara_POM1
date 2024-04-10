@@ -297,9 +297,9 @@ public class SeleniumUtils extends TestBase{
 
 	// Method to set WebDriver timeouts
 	 public static void setWebDriverTimeouts() {
-	        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(StaticVariables.PAGELOAD_TIMEOUT));
-	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(StaticVariables.PAGELOAD_TIMEOUT));
-	        wait = new WebDriverWait(driver, Duration.ofSeconds(StaticVariables.PAGELOAD_TIMEOUT));
+	        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Constants.PAGELOAD_TIMEOUT));
+	        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Constants.PAGELOAD_TIMEOUT));
+	        wait = new WebDriverWait(driver, Duration.ofSeconds(Constants.PAGELOAD_TIMEOUT));
 	    }
 	// Method to navigate to a URL
 	 public static void navigateToUrl(String url) {
