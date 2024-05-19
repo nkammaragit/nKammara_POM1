@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="24.44" tests="1" skipped="0" failures="0" errors="0">
-<testcase classname="Feature to test login functionality" name="Check login is successful with valid credentials - Example #1.1" time="24.254">
+<testsuite name="Cucumber" time="25.112" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="Feature to test login functionality" name="Check login is successful with valid credentials - Example #1.1" time="24.917">
 <system-out><![CDATA[
-Given user validates login functionality of "OrangeHRM".....................passed
+Given user is on Login page.................................................passed
+When user validates login functionality of "Guru99".........................passed
+Then user should see the Home page..........................................passed
 ]]></system-out>
 </testcase>
 </testsuite>

@@ -38,6 +38,7 @@ public class TestBase {
         prop = CommonUtils.loadProperties(CONFIG_FILE_PATH);
     }
 
+    //Initializing all prominent classes and methods
     public static void initialization() {
         try {
             test = ExtentManager.getExtentTest();
@@ -58,20 +59,7 @@ public class TestBase {
         }
     }
 
-//    private static Properties loadProperties(String filePath) {
-//        Properties properties = new Properties();
-//        try (FileInputStream input = new FileInputStream(System.getProperty("user.dir") + TEST_RESOURCES + filePath)) {
-//            properties.load(input);
-//            logger.info("TestBase config.properties has been loaded");
-//        } catch (IOException io) {
-//            logger.error("Error loading properties file: " + filePath);
-//            io.printStackTrace();
-//        }
-//        return properties;
-//    }
-
-   
-
+    //Method to initialize page classes
     private static void instantiatePages() {
         loginPage = new LoginPage();
         homePage = new HomePage();

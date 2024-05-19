@@ -24,6 +24,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.Status;
 import com.letzAutomate.qa.base.TestBase;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class SeleniumUtils extends TestBase{
 	
 
@@ -266,8 +268,10 @@ public class SeleniumUtils extends TestBase{
 	 public static void initializeWebDriver(String browserName) {
 	        switch (browserName.toLowerCase()) {
 	            case "chrome":
-	                System.setProperty("webdriver.chrome.driver", getDriverPath("chromedriver.exe"));
+//	                System.setProperty("webdriver.chrome.driver", getDriverPath("chromedriver.exe"));
+	                WebDriverManager.chromedriver().setup();
 	                driver = new ChromeDriver();
+	                
 	                break;
 	            case "firefox":
 	                System.setProperty("webdriver.gecko.driver", getDriverPath("geckodriver"));
