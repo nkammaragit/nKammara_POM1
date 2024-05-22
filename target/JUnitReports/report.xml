@@ -1,9 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="25.112" tests="1" skipped="0" failures="0" errors="0">
-<testcase classname="Feature to test login functionality" name="Check login is successful with valid credentials - Example #1.1" time="24.917">
+<testsuite name="Cucumber" time="116.548" tests="4" skipped="0" failures="3" errors="0">
+<testcase classname="Feature to test login functionality" name="Check login is successful with valid credentials" time="75.967">
+<failure type="java.lang.AssertionError" message="Welcome message not displayed">
+<![CDATA[java.lang.AssertionError: Welcome message not displayed
+	at stepdefinitions.LoginPageSteps.VerifyLoginIsSuccess(LoginPageSteps.java:49)
+	at ?.user should see the Home page(file:///E:/Workspace-1/CucumberJava/src/test/resources/features/HomePageOrange.feature:6)
+]]>
+</failure>
 <system-out><![CDATA[
 Given user is on Login page.................................................passed
 When user validates login functionality of "Guru99".........................passed
+Then user should see the Home page..........................................failed
+Given user is on search page................................................skipped
+When user enters search criteria............................................skipped
+Then search results should be appeared......................................skipped
+]]></system-out>
+</testcase>
+<testcase classname="Feature to test login functionality" name="Check login is successful with valid credentials" time="8.12">
+<failure type="java.lang.AssertionError" message="Welcome message not displayed">
+<![CDATA[java.lang.AssertionError: Welcome message not displayed
+	at stepdefinitions.LoginPageSteps.VerifyLoginIsSuccess(LoginPageSteps.java:49)
+	at ?.user should see the Home page(file:///E:/Workspace-1/CucumberJava/src/test/resources/features/LoginGuru99.feature:6)
+]]>
+</failure>
+<system-out><![CDATA[
+Given user is on Login page.................................................passed
+When user validates login functionality of "Guru99".........................passed
+Then user should see the Home page..........................................failed
+]]></system-out>
+</testcase>
+<testcase classname="Feature to test login functionality" name="Check login is successful with valid credentials" time="7.714">
+<failure type="java.lang.AssertionError" message="Welcome message not displayed">
+<![CDATA[java.lang.AssertionError: Welcome message not displayed
+	at stepdefinitions.LoginPageSteps.VerifyLoginIsSuccess(LoginPageSteps.java:49)
+	at ?.user should see the Home page(file:///E:/Workspace-1/CucumberJava/src/test/resources/features/LoginOrange.feature:6)
+]]>
+</failure>
+<system-out><![CDATA[
+Given user is on Login page.................................................passed
+When user validates login functionality of "OrangeHRM"......................passed
+Then user should see the Home page..........................................failed
+]]></system-out>
+</testcase>
+<testcase classname="Feature to test login functionality" name="Check login is successful with valid credentials - Example #1.1" time="24.432">
+<system-out><![CDATA[
+Given user is on Login page.................................................passed
+When user validates login functionality of "OrangeHRM"......................passed
 Then user should see the Home page..........................................passed
 ]]></system-out>
 </testcase>

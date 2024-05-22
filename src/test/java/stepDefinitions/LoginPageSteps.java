@@ -38,7 +38,10 @@ public class LoginPageSteps extends TestBase{
 	
 	 @Then("user should see the Home page")
 	public void VerifyLoginIsSuccess() {
-	        boolean isWelcomeMessageDisplayed = driver.getPageSource().contains("Home");
+//	        boolean isWelcomeMessageDisplayed = driver.getPageSource().contains("Home");
+	        boolean isWelcomeMessageDisplayed =  driver.getCurrentUrl().contains("dashboard");
+
+	       
 	        if (!isWelcomeMessageDisplayed) {
 	        	test.log(Status.FAIL,  " - User failed to log in");
 				logger.error("****** " +   " - User failed to log in");

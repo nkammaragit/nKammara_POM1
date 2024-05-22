@@ -60,6 +60,7 @@ public class LoginPage extends TestBase{
 				CommonUtils.waitInSeconds(5);
 				SeleniumUtils.clickElement(loginBtn);
 				logger.info("****** login credentials entered ");
+				loginStatus = true;	
 
 				if(SeleniumUtils.isAlertPresent()) SeleniumUtils.handleAlert();
 				

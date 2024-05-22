@@ -11,8 +11,8 @@ Then user should see the Home page
 
 Examples:
 |LoginPortal|
-#|OrangeHRM|
-|Guru99|
+|OrangeHRM|
+#|Guru99|
 
 
 #Given user validates login functionality of "Guru99"
