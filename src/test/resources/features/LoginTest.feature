@@ -1,5 +1,5 @@
 Feature: Feature to test login functionality
-@SmokeTest
+@RegressionTest
 Scenario Outline: Check login is successful with valid credentials
 Given user is on Login page
 When user validates login functionality of "<LoginPortal>"
